@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turn Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 100px;
+        }
+
+        .counter {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        #current-user {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        #next-user {
+            font-size: 18px;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="counter" id="counter">1</div>
+    <div id="current-user">Current User: None</div>
+    <div id="next-user">Next User: None</div>
+    <button onclick="assignTurn()">Assign Turn</button>
+    <button onclick="nextTurn()">Next Turn</button>
+    <script>
+        let currentCounter = 1;
+        let currentAssignedUser = "None";
+        let nextAssignedUser = "None";
+
+        function assignTurn() {
+            currentAssignedUser = prompt("Enter your name:");
+            document.getElementById("current-user").textContent = "Current User: " + currentAssignedUser;
+        }
+
+        function nextTurn() {
+            if (currentCounter < 50) {
+                currentCounter++;
+                nextAssignedUser = prompt("Enter the name of the next user:");
+                document.getElementById("counter").textContent = currentCounter;
+                document.getElementById("current-user").textContent = "Current User: None";
+                document.getElementById("next-user").textContent = "Next User: " + nextAssignedUser;
+            } else {
+                alert("The counter has reached its maximum value.");
+            }
+        }
+    </script>
+</body>
+</html>
